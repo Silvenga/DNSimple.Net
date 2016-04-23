@@ -31,7 +31,7 @@
             var clientHandler = new BasicAuthenticationHttpClientHandler(email, password);
             _client = new HttpClient(clientHandler)
             {
-                BaseAddress = new Uri(url)
+                BaseAddress = new Uri(url),
             };
         }
 

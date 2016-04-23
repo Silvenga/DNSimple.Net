@@ -52,13 +52,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\CreateRecordRequest.cs" />
     <Compile Include="Api\DNSimpleClient.cs" />
-    <Compile Include="Models\CreateDomainRequest.cs" />
     <Compile Include="Api\IRecords.cs" />
     <Compile Include="Api\IZones.cs" />
+    <Compile Include="Models\CreateRecordRequest.cs" />
     <Compile Include="Models\ExportResult.cs" />
-    <Compile Include="Models\RecordResult.cs" />
     <Compile Include="Models\ListDomainResult.cs" />
     <Compile Include="Api\IDomains.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

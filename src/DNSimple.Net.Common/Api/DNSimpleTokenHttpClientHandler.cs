@@ -23,7 +23,11 @@
                                                                      CancellationToken cancellationToken)
         {
             request.Headers.Add(DNSimpleToken, Token);
-            return await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
+            var a = await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
+
+     
+
+            return a;
         }
     }
 }

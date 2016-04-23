@@ -41,13 +41,7 @@ namespace DNSimple.Net.V1.Tests.Api
 
         private async Task<ListDomainResult> CreateDomain(string domainName)
         {
-            var domain = new CreateDomainRequest
-            {
-                Domain = new CreateDomain
-                {
-                    Name = domainName
-                }
-            };
+            var domain = new CreateDomainRequest(MockDomainName);
             return await _dnSimpleClient.Domains.CreateDomain(domain);
         }
 
