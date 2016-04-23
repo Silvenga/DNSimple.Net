@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>Silvenga</authors>
+    <owners>Silvenga</owners>
+    <licenseUrl>https://github.com/Silvenga/DNSimple.Net/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/Silvenga/DNSimple.Net</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Common components for DNSimple.Net.</description>
+    <copyright>Copyright 2016</copyright>
+    <tags>DNSimple</tags>
+  </metadata>
+</package>

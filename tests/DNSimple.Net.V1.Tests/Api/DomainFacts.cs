@@ -40,6 +40,18 @@
         }
 
         [Fact]
+        public async Task Can_get_a_single_domain()
+        {
+            await CreateDomain(MockDomainName);
+
+            // Act
+            var result = await _dnSimpleClient.Domains.GetDomain(MockDomainName);
+
+            // Assert
+            result.Domain.Name.Should().Be(MockDomainName);
+        }
+
+        [Fact]
         public async Task When_new_domain_is_created_list_should_return_it()
         {
             var domain = new CreateDomainRequest

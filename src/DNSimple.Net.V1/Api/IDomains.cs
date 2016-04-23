@@ -15,6 +15,9 @@
         [Post("/v1/domains")]
         Task<ListDomainResult> CreateDomain(CreateDomainRequest request);
 
+        [Get("/v1/domains/{domainName}")]
+        Task<ListDomainResult> GetDomain(string domainName);
+
         [Delete("/v1/domains/{domainName}")]
         Task DeleteDomain(string domainName);
     }

@@ -2,17 +2,21 @@
 
 [![AppVeyor](https://img.shields.io/appveyor/ci/Silvenga/dnsimple-net.svg)](https://ci.appveyor.com/project/Silvenga/dnsimple-net)
 
-## TODO
+A simple .Net driver for DNSimple's REST API using a pure HttpClient implementation. 
+
+# Support
+
+## V1
 
 #### Authentication
 - [ ] Basic Authentication (email:password)
-- [ ] DNSimple-Token (email:token)
+- [X] DNSimple-Token (email:token)
 - [ ] DNSimple-Domain-Token (token)
 
 #### Domains
 - [X] List
 - [X] Create
-- [ ] Get
+- [X] Get
 - [X] Delete
 
 #### Domain Records
