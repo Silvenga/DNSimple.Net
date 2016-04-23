@@ -1,4 +1,4 @@
-﻿namespace DNSimple.V1.Models
+﻿namespace DNSimple.Net.V1.Models
 {
     public class ListDomainResult
     {

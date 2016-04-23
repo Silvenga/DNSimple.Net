@@ -1,4 +1,4 @@
-﻿namespace DNSimple.V1.Tests.Helpers
+﻿namespace DNSimple.Net.V1.Tests.Helpers
 {
     public static class Constants
     {

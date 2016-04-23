@@ -1,9 +1,9 @@
-﻿namespace DNSimple.V1.Api
+﻿namespace DNSimple.Net.V1.Api
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
-    using DNSimple.V1.Models;
+    using DNSimple.Net.V1.Models;
 
     using Refit;
 

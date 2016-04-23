@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DNSimple.V1", "src\DNSimple.V1\DNSimple.V1.csproj", "{E93B2725-D6D1-459E-9E2A-944121D66045}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DNSimple.Net.V1", "src\DNSimple.Net.V1\DNSimple.Net.V1.csproj", "{E93B2725-D6D1-459E-9E2A-944121D66045}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{EB498C38-465D-4CB7-87B1-1476FE28A33C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DNSimple.V1.Tests", "tests\DNSimple.V1.Tests\DNSimple.V1.Tests.csproj", "{2391181C-4235-4FEF-835A-88CFDCC6BE23}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DNSimple.Net.V1.Tests", "tests\DNSimple.Net.V1.Tests\DNSimple.Net.V1.Tests.csproj", "{2391181C-4235-4FEF-835A-88CFDCC6BE23}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DNSimple.Common", "src\DNSimple.Common\DNSimple.Common.csproj", "{57CF1529-95D9-4C1E-9556-E66BDB43972C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DNSimple.Net.Common", "src\DNSimple.Net.Common\DNSimple.Net.Common.csproj", "{57CF1529-95D9-4C1E-9556-E66BDB43972C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

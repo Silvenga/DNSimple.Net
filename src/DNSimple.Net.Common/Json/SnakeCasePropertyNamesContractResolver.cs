@@ -1,4 +1,4 @@
-﻿namespace DNSimple.Common.Json
+﻿namespace DNSimple.Net.Common.Json
 {
     using Newtonsoft.Json.Serialization;
 

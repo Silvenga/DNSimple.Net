@@ -8,8 +8,8 @@
     <ProjectGuid>{E93B2725-D6D1-459E-9E2A-944121D66045}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DNSimple.V1</RootNamespace>
-    <AssemblyName>DNSimple.V1</AssemblyName>
+    <RootNamespace>DNSimple.Net.V1</RootNamespace>
+    <AssemblyName>DNSimple.Net.V1</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
@@ -63,9 +63,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DNSimple.Common\DNSimple.Common.csproj">
+    <ProjectReference Include="..\DNSimple.Net.Common\DNSimple.Net.Common.csproj">
       <Project>{57cf1529-95d9-4c1e-9556-e66bdb43972c}</Project>
-      <Name>DNSimple.Common</Name>
+      <Name>DNSimple.Net.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

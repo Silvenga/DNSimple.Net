@@ -1,4 +1,4 @@
-﻿namespace DNSimple.Common.Api
+﻿namespace DNSimple.Net.Common.Api
 {
     using System.Net.Http;
     using System.Threading;

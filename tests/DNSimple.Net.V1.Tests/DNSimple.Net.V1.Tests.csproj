@@ -7,8 +7,8 @@
     <ProjectGuid>{2391181C-4235-4FEF-835A-88CFDCC6BE23}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DNSimple.V1.Tests</RootNamespace>
-    <AssemblyName>DNSimple.V1.Tests</AssemblyName>
+    <RootNamespace>DNSimple.Net.V1.Tests</RootNamespace>
+    <AssemblyName>DNSimple.Net.V1.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -94,7 +94,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\DNSimple.V1\DNSimple.V1.csproj">
+    <ProjectReference Include="..\..\src\DNSimple.Net.V1\DNSimple.Net.V1.csproj">
       <Project>{e93b2725-d6d1-459e-9e2a-944121d66045}</Project>
       <Name>DNSimple.V1</Name>
     </ProjectReference>

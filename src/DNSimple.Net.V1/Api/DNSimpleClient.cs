@@ -1,21 +1,21 @@
-﻿namespace DNSimple.V1.Api
+﻿namespace DNSimple.Net.V1.Api
 {
     using System;
     using System.Net.Http;
 
-    using DNSimple.Common.Api;
-    using DNSimple.Common.Json;
+    using DNSimple.Net.Common.Api;
+    using DNSimple.Net.Common.Json;
 
     using Newtonsoft.Json;
 
     using Refit;
 
-    public class Client
+    public class DNSimpleClient
     {
         private readonly HttpClient _client;
         private readonly RefitSettings _settings;
 
-        public Client(string email, string token, string url = "https://api.dnsimple.com")
+        public DNSimpleClient(string email, string token, string url = "https://api.dnsimple.com")
         {
             var tokenHttpClientHandler = new DNSimpleTokenHttpClientHandler(email, token);
             _client = new HttpClient(tokenHttpClientHandler)

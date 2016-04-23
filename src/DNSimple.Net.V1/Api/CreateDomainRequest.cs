@@ -1,4 +1,4 @@
-﻿namespace DNSimple.V1.Api
+﻿namespace DNSimple.Net.V1.Api
 {
     public class CreateDomainRequest
     {

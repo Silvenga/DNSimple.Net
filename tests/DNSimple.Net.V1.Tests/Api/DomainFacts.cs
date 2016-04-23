@@ -1,11 +1,11 @@
-﻿namespace DNSimple.V1.Tests.Api
+﻿namespace DNSimple.Net.V1.Tests.Api
 {
     using System;
     using System.Threading.Tasks;
 
-    using DNSimple.V1.Api;
-    using DNSimple.V1.Models;
-    using DNSimple.V1.Tests.Helpers;
+    using DNSimple.Net.V1.Api;
+    using DNSimple.Net.V1.Models;
+    using DNSimple.Net.V1.Tests.Helpers;
 
     using FluentAssertions;
 
@@ -16,7 +16,7 @@
     public class DomainFacts : IDisposable
     {
         private static readonly Fixture AutoFixture = new Fixture();
-        private readonly Client _client;
+        private readonly DNSimpleClient _dnSimpleClient;
         private string _mockDomain;
 
         private string MockDomainName
@@ -24,7 +24,7 @@
 
         public DomainFacts()
         {
-            _client = new Client(Constants.SandboxEmail, Constants.SandboxToken, Constants.SandboxUrl);
+            _dnSimpleClient = new DNSimpleClient(Constants.SandboxEmail, Constants.SandboxToken, Constants.SandboxUrl);
         }
 
         [Fact]
@@ -33,7 +33,7 @@
             await CreateDomain(MockDomainName);
 
             // Act
-            var result = await _client.Domains.ListDomains();
+            var result = await _dnSimpleClient.Domains.ListDomains();
 
             // Assert
             result.Should().Contain(x => x.Domain.Name == MockDomainName);
@@ -51,12 +51,12 @@
             };
 
             // Act
-            var result = await _client.Domains.CreateDomain(domain);
+            var result = await _dnSimpleClient.Domains.CreateDomain(domain);
 
             // Assert
             result.Domain.Name.Should().Be(MockDomainName);
 
-            var list = await _client.Domains.ListDomains();
+            var list = await _dnSimpleClient.Domains.ListDomains();
             list.Should().Contain(x => x.Domain.Name == MockDomainName);
         }
 
@@ -66,10 +66,10 @@
             await CreateDomain(MockDomainName);
 
             // Act
-            await _client.Domains.DeleteDomain(MockDomainName);
+            await _dnSimpleClient.Domains.DeleteDomain(MockDomainName);
 
             // Assert
-            var list = await _client.Domains.ListDomains();
+            var list = await _dnSimpleClient.Domains.ListDomains();
             list.Should().NotContain(x => x.Domain.Name == MockDomainName);
         }
 
@@ -82,7 +82,7 @@
                     Name = domainName
                 }
             };
-            return await _client.Domains.CreateDomain(domain);
+            return await _dnSimpleClient.Domains.CreateDomain(domain);
         }
 
         public void Dispose()
@@ -91,7 +91,7 @@
             {
                 try
                 {
-                    _client.Domains.DeleteDomain(MockDomainName).Wait();
+                    _dnSimpleClient.Domains.DeleteDomain(MockDomainName).Wait();
                 }
                 catch (Exception)
                 {
