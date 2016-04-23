@@ -96,7 +96,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\DNSimple.Net.V1\DNSimple.Net.V1.csproj">
       <Project>{e93b2725-d6d1-459e-9e2a-944121d66045}</Project>
-      <Name>DNSimple.V1</Name>
+      <Name>DNSimple.Net.V1</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

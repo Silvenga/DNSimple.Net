@@ -52,7 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Api\Client.cs" />
+    <Compile Include="Api\DNSimpleClient.cs" />
     <Compile Include="Api\CreateDomainRequest.cs" />
     <Compile Include="Models\ListDomainResult.cs" />
     <Compile Include="Api\IDomains.cs" />
