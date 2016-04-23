@@ -33,5 +33,6 @@
         }
 
         public IDomains Domains => RestService.For<IDomains>(_client, _settings);
+        public IRecords Records => RestService.For<IRecords>(_client, _settings);
     }
 }

@@ -54,6 +54,8 @@
   <ItemGroup>
     <Compile Include="Api\DNSimpleClient.cs" />
     <Compile Include="Api\CreateDomainRequest.cs" />
+    <Compile Include="Api\IRecords.cs" />
+    <Compile Include="Models\RecordResult.cs" />
     <Compile Include="Models\ListDomainResult.cs" />
     <Compile Include="Api\IDomains.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

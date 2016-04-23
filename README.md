@@ -20,7 +20,7 @@ A simple .Net driver for DNSimple's REST API using a pure HttpClient implementat
 - [X] Delete
 
 #### Domain Records
-- [ ] List
+- [X] List
 - [ ] Create
 - [ ] Get
 - [ ] Update
