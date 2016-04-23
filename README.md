@@ -9,9 +9,9 @@ A simple .Net driver for DNSimple's REST API using a pure HttpClient implementat
 ## V1
 
 #### Authentication
-- [ ] Basic Authentication (email:password)
+- [X] Basic Authentication (email:password)
 - [X] DNSimple-Token (email:token)
-- [ ] DNSimple-Domain-Token (token)
+- [X] DNSimple-Domain-Token (token)
 
 #### Domains
 - [X] List
@@ -21,10 +21,10 @@ A simple .Net driver for DNSimple's REST API using a pure HttpClient implementat
 
 #### Domain Records
 - [X] List
-- [ ] Create
-- [ ] Get
-- [ ] Update
-- [ ] Delete
+- [X] Create
+- [X] Get
+- [X] Update
+- [X] Delete
 
 #### Domain Zones
-- [ ] Export
+- [X] Export

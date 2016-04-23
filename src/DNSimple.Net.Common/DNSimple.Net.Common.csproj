@@ -47,6 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\BasicAuthenticationHttpClientHandler.cs" />
+    <Compile Include="Api\DNSimpleDomainTokenHttpClientHandler.cs" />
     <Compile Include="Api\DNSimpleTokenHttpClientHandler.cs" />
     <Compile Include="Json\SnakeCasePropertyNamesContractResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

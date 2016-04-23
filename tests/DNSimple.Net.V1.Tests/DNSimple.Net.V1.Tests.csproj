@@ -87,6 +87,7 @@
   <ItemGroup>
     <Compile Include="Api\DomainFacts.cs" />
     <Compile Include="Api\RecordFacts.cs" />
+    <Compile Include="Api\ZoneFacts.cs" />
     <Compile Include="Helpers\Constants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

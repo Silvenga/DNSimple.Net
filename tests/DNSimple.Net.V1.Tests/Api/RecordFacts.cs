@@ -34,7 +34,7 @@
             await CreateDomain(MockDomainName);
 
             // Act
-            var result = await _dnSimpleClient.Records.ListRecordsByName(MockDomainName);
+            var result = await _dnSimpleClient.Records.ListRecordsByDomainName(MockDomainName);
 
             // Assert
             result.Where(x => x.Record.RecordType == "NS").Should().HaveCount(4);
@@ -46,10 +46,88 @@
             var domain = await CreateDomain(MockDomainName);
 
             // Act
-            var result = await _dnSimpleClient.Records.ListRecordsById(domain.Domain.Id);
+            var result = await _dnSimpleClient.Records.ListRecordsByDomainId(domain.Domain.Id);
 
             // Assert
             result.Where(x => x.Record.RecordType == "NS").Should().HaveCount(4);
+        }
+
+        [Fact]
+        public async Task Can_create_record_by_domain_name()
+        {
+            await CreateDomain(MockDomainName);
+            var request = new CreateRecordRequest
+            {
+                Record = new CreateRecord
+                {
+                    RecordType = "TXT",
+                    Name = "",
+                    Content = AutoFixture.Create<string>()
+                }
+            };
+
+            // Act
+            await _dnSimpleClient.Records.CreateRecordByDomainName(MockDomainName, request);
+
+            // Assert
+            var result = await _dnSimpleClient.Records.ListRecordsByDomainName(MockDomainName);
+            result.Should().Contain(x => x.Record.Content == request.Record.Content);
+        }
+
+        [Fact]
+        public async Task Can_get_record_by_domain_name()
+        {
+            await CreateDomain(MockDomainName);
+
+            var content = AutoFixture.Create<string>();
+            var record = await CreateRecord(content);
+
+            // Act
+            var result = await _dnSimpleClient.Records.GetRecordByDomainName(MockDomainName, record.Record.Id);
+
+            // Assert
+            result.Should().NotBeNull();
+            result.Record.Content.Should().Be(content);
+        }
+
+        [Fact]
+        public async Task Can_update_record_by_domain_name()
+        {
+            await CreateDomain(MockDomainName);
+
+            var content = AutoFixture.Create<string>();
+            var record = await CreateRecord(content);
+            var updateRequest = new CreateRecordRequest
+            {
+                Record = new CreateRecord
+                {
+                    Name = "",
+                    Content = AutoFixture.Create<string>()
+                }
+            };
+
+            // Act
+            await _dnSimpleClient.Records.UpdateRecordByDomainName(MockDomainName, record.Record.Id, updateRequest);
+
+            // Assert
+            var result = await _dnSimpleClient.Records.GetRecordByDomainName(MockDomainName, record.Record.Id);
+            result.Record.Content.Should().Be(updateRequest.Record.Content);
+        }
+
+        [Fact]
+        public async Task Can_delete_by_domain_name()
+        {
+            await CreateDomain(MockDomainName);
+
+            var content = AutoFixture.Create<string>();
+            var record = await CreateRecord(content);
+
+            // Act
+            await _dnSimpleClient.Records.DeleteRecordByDomainName(MockDomainName, record.Record.Id);
+
+            // Assert
+            var result = await _dnSimpleClient.Records.ListRecordsByDomainName(MockDomainName);
+            result.Should().NotContain(x => x.Record.Id == record.Record.Id);
         }
 
         private async Task<ListDomainResult> CreateDomain(string domainName)
@@ -62,6 +140,20 @@
                 }
             };
             return await _dnSimpleClient.Domains.CreateDomain(domain);
+        }
+
+        private async Task<RecordResult> CreateRecord(string context)
+        {
+            var request = new CreateRecordRequest
+            {
+                Record = new CreateRecord
+                {
+                    RecordType = "TXT",
+                    Name = "",
+                    Content = context
+                }
+            };
+            return await _dnSimpleClient.Records.CreateRecordByDomainName(MockDomainName, request);
         }
 
         public void Dispose()
