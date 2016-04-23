@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("DNSimple")]
+[assembly: AssemblyTitle("DNSimple.V1.Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("DNSimple")]
+[assembly: AssemblyProduct("DNSimple.V1.Tests")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("41e3dea7-758d-4f03-bdb0-60b8202ba586")]
+[assembly: Guid("2391181c-4235-4fef-835a-88cfdcc6be23")]
 
 // Version information for an assembly consists of the following four values:
 //
