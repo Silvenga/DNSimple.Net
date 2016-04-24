@@ -5,19 +5,17 @@
 
     public static class CopierHelper
     {
+        // http://stackoverflow.com/a/8724150
+
         public static void CopyPropertiesTo(this object source, object destination)
         {
-            // If any this null throw an exception
             if (source == null || destination == null)
             {
                 throw new Exception("Source or/and Destination Objects are null");
             }
-            // Getting the Types of the objects
             var typeDest = destination.GetType();
             var typeSrc = source.GetType();
 
-            // Iterate the Properties of the source instance and  
-            // populate them from their desination counterparts  
             var srcProps = typeSrc.GetProperties();
             foreach (var srcProp in srcProps)
             {
@@ -46,7 +44,7 @@
                 {
                     continue;
                 }
-                // Passed all tests, lets set the value
+
                 targetProperty.SetValue(destination, srcProp.GetValue(source, null), null);
             }
         }

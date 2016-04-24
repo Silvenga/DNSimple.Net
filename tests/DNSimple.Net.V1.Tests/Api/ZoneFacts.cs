@@ -33,16 +33,16 @@ namespace DNSimple.Net.V1.Tests.Api
             await CreateDomain(MockDomainName);
 
             // Act
-            var result = await _dnSimpleClient.Zones.ExportByDomainName(MockDomainName);
+            var result = await _dnSimpleClient.Zones.ExportByDomainNameAsync(MockDomainName);
 
             // Assert
             result.Zone.Should().Contain($"$ORIGIN {MockDomainName}.");
         }
 
-        private async Task<ListDomainResult> CreateDomain(string domainName)
+        private async Task<DomainResult> CreateDomain(string domainName)
         {
-            var domain = new CreateDomainRequest(MockDomainName);
-            return await _dnSimpleClient.Domains.CreateDomain(domain);
+            var domain = new DomainRequest(domainName);
+            return await _dnSimpleClient.Domains.CreateDomainAsync(domain);
         }
 
         public void Dispose()
@@ -51,7 +51,7 @@ namespace DNSimple.Net.V1.Tests.Api
             {
                 try
                 {
-                    _dnSimpleClient.Domains.DeleteDomain(MockDomainName).Wait();
+                    _dnSimpleClient.Domains.DeleteDomainAsync(MockDomainName).Wait();
                 }
                 catch (Exception)
                 {

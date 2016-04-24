@@ -10,33 +10,33 @@
     public interface IRecords
     {
         [Get("/v1/domains/{domainName}/records")]
-        Task<IList<RecordResult>> ListRecordsByDomainName(string domainName);
+        Task<IList<RecordResponse>> ListRecordsByDomainNameAsync(string domainName);
 
         [Get("/v1/domains/{domainId}/records")]
-        Task<IList<RecordResult>> ListRecordsByDomainId(int domainId);
+        Task<IList<RecordResponse>> ListRecordsByDomainIdAsync(int domainId);
 
         [Post("/v1/domains/{domainName}/records")]
-        Task<RecordResult> CreateRecordByDomainName(string domainName, CreateRecordRequest request);
+        Task<RecordResponse> CreateRecordByDomainNameAsync(string domainName, RecordRequest request);
 
         [Post("/v1/domains/{domainId}/records")]
-        Task<RecordResult> CreateRecordByDomainId(int domainId, CreateRecordRequest request);
+        Task<RecordResponse> CreateRecordByDomainIdAsync(int domainId, RecordRequest request);
 
         [Get("/v1/domains/{domainName}/records/{recordId}")]
-        Task<RecordResult> GetRecordByDomainName(string domainName, int recordId);
+        Task<RecordResponse> GetRecordByDomainNameAsync(string domainName, int recordId);
 
         [Get("/v1/domains/{domainId}/records/{recordId}")]
-        Task<RecordResult> GetRecordByDomainId(int domainId, int recordId);
+        Task<RecordResponse> GetRecordByDomainIdAsync(int domainId, int recordId);
 
         [Put("/v1/domains/{domainName}/records/{recordId}")]
-        Task<RecordResult> UpdateRecordByDomainName(string domainName, int recordId, CreateRecordRequest request);
+        Task<RecordResponse> UpdateRecordByDomainNameAsync(string domainName, int recordId, RecordRequest request);
 
         [Put("/v1/domains/{domainId}/records/{recordId}")]
-        Task<RecordResult> UpdateRecordByDomainId(int domainId, int recordId, CreateRecordRequest request);
+        Task<RecordResponse> UpdateRecordByDomainIdAsync(int domainId, int recordId, RecordRequest request);
 
         [Delete("/v1/domains/{domainName}/records/{recordId}")]
-        Task DeleteRecordByDomainName(string domainName, int recordId);
+        Task DeleteRecordByDomainNameAsync(string domainName, int recordId);
 
         [Delete("/v1/domains/{domainId}/records/{recordId}")]
-        Task DeleteRecordByDomainId(int domainId, int recordId);
+        Task DeleteRecordByDomainIdAsync(int domainId, int recordId);
     }
 }

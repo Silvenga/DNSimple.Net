@@ -10,15 +10,15 @@
     public interface IDomains
     {
         [Get("/v1/domains")]
-        Task<IList<ListDomainResult>> ListDomains();
+        Task<IList<DomainResult>> ListDomainsAsync();
 
         [Post("/v1/domains")]
-        Task<ListDomainResult> CreateDomain(CreateDomainRequest request);
+        Task<DomainResult> CreateDomainAsync(DomainRequest request);
 
         [Get("/v1/domains/{domainName}")]
-        Task<ListDomainResult> GetDomain(string domainName);
+        Task<DomainResult> GetDomainAsync(string domainName);
 
         [Delete("/v1/domains/{domainName}")]
-        Task DeleteDomain(string domainName);
+        Task DeleteDomainAsync(string domainName);
     }
 }

@@ -9,9 +9,9 @@
     public interface IZones
     {
         [Get("/v1/domains/{domainName}/zone")]
-        Task<ExportResult> ExportByDomainName(string domainName);
+        Task<ExportResult> ExportByDomainNameAsync(string domainName);
 
         [Get("/v1/domains/{domainId}/zone")]
-        Task<ExportResult> ExportByDomainId(int domainId);
+        Task<ExportResult> ExportByDomainIdAsync(int domainId);
     }
 }

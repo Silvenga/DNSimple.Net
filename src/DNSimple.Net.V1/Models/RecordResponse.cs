@@ -9,16 +9,7 @@
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
-    public class CreateRecordRequest
-    {
-        public string Name { get; set; }
-        public string RecordType { get; set; }
-        public string Content { get; set; }
-        public int? Ttl { get; set; }
-        public int? Prio { get; set; }
-    }
-
-    public class RecordResult
+    public class RecordResponse
     {
         public string Name { get; set; }
         public int Ttl { get; set; }
@@ -29,7 +20,9 @@
         public int Id { get; set; }
         public string Content { get; set; }
         public string RecordType { get; set; }
-        public int? Prio { get; set; }
+
+        [JsonProperty("prio")]
+        public int? Priority { get; set; }
 
         private const string NestedProperty = "record";
 
@@ -43,7 +36,7 @@
         {
             if (_additionalData?.ContainsKey(NestedProperty) == true && _additionalData?.Count == 1)
             {
-                var nestedObject = _additionalData[NestedProperty].ToObject<RecordResult>(new JsonSerializer
+                var nestedObject = _additionalData[NestedProperty].ToObject<RecordResponse>(new JsonSerializer
                 {
                     ContractResolver = new SnakeCasePropertyNamesContractResolver()
                 });

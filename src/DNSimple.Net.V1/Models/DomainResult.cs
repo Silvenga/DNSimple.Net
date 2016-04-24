@@ -9,7 +9,7 @@
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
-    public class ListDomainResult
+    public class DomainResult
     {
         public int Id { get; set; }
         public int? UserId { get; set; }
@@ -41,7 +41,7 @@
         {
             if (_additionalData?.ContainsKey(NestedProperty) == true && _additionalData?.Count == 1)
             {
-                var nestedObject = _additionalData[NestedProperty].ToObject<ListDomainResult>(new JsonSerializer
+                var nestedObject = _additionalData[NestedProperty].ToObject<DomainResult>(new JsonSerializer
                 {
                     ContractResolver = new SnakeCasePropertyNamesContractResolver()
                 });
@@ -49,23 +49,5 @@
                 nestedObject.CopyPropertiesTo(this);
             }
         }
-    }
-
-    public class CreateDomainRequest
-    {
-        public CreateDomainRequest(string domainName)
-        {
-            Domain = new CreateDomain
-            {
-                Name = domainName
-            };
-        }
-
-        public CreateDomain Domain { get; set; }
-    }
-
-    public class CreateDomain
-    {
-        public string Name { get; set; }
     }
 }

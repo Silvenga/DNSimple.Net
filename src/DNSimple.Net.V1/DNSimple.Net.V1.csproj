@@ -55,10 +55,13 @@
     <Compile Include="Api\DNSimpleClient.cs" />
     <Compile Include="Api\IRecords.cs" />
     <Compile Include="Api\IZones.cs" />
-    <Compile Include="Models\CreateRecordRequest.cs" />
+    <Compile Include="Models\DomainName.cs" />
+    <Compile Include="Models\DomainRequest.cs" />
+    <Compile Include="Models\RecordRequest.cs" />
     <Compile Include="Models\ExportResult.cs" />
-    <Compile Include="Models\ListDomainResult.cs" />
+    <Compile Include="Models\DomainResult.cs" />
     <Compile Include="Api\IDomains.cs" />
+    <Compile Include="Models\RecordResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

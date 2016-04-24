@@ -31,10 +31,10 @@
         [Fact]
         public async Task Can_get_list_of_records_by_domain_name()
         {
-            await CreateDomain(MockDomainName);
+            await CreateDomainAsync(MockDomainName);
 
             // Act
-            var result = await _dnSimpleClient.Records.ListRecordsByDomainName(MockDomainName);
+            var result = await _dnSimpleClient.Records.ListRecordsByDomainNameAsync(MockDomainName);
 
             // Assert
             result.Where(x => x.RecordType == "NS").Should().HaveCount(4);
@@ -43,10 +43,10 @@
         [Fact]
         public async Task Can_get_list_of_records_by_domain_id()
         {
-            var domain = await CreateDomain(MockDomainName);
+            var domain = await CreateDomainAsync(MockDomainName);
 
             // Act
-            var result = await _dnSimpleClient.Records.ListRecordsByDomainId(domain.Id);
+            var result = await _dnSimpleClient.Records.ListRecordsByDomainIdAsync(domain.Id);
 
             // Assert
             result.Where(x => x.RecordType == "NS").Should().HaveCount(4);
@@ -55,8 +55,8 @@
         [Fact]
         public async Task Can_create_record_by_domain_name()
         {
-            await CreateDomain(MockDomainName);
-            var request = new CreateRecordRequest
+            await CreateDomainAsync(MockDomainName);
+            var request = new RecordRequest
             {
                 RecordType = "TXT",
                 Name = "",
@@ -64,23 +64,23 @@
             };
 
             // Act
-            await _dnSimpleClient.Records.CreateRecordByDomainName(MockDomainName, request);
+            await _dnSimpleClient.Records.CreateRecordByDomainNameAsync(MockDomainName, request);
 
             // Assert
-            var result = await _dnSimpleClient.Records.ListRecordsByDomainName(MockDomainName);
+            var result = await _dnSimpleClient.Records.ListRecordsByDomainNameAsync(MockDomainName);
             result.Should().Contain(x => x.Content == request.Content);
         }
 
         [Fact]
         public async Task Can_get_record_by_domain_name()
         {
-            await CreateDomain(MockDomainName);
+            await CreateDomainAsync(MockDomainName);
 
             var content = AutoFixture.Create<string>();
-            var record = await CreateRecord(content);
+            var record = await CreateRecordAsync(content);
 
             // Act
-            var result = await _dnSimpleClient.Records.GetRecordByDomainName(MockDomainName, record.Id);
+            var result = await _dnSimpleClient.Records.GetRecordByDomainNameAsync(MockDomainName, record.Id);
 
             // Assert
             result.Should().NotBeNull();
@@ -90,55 +90,55 @@
         [Fact]
         public async Task Can_update_record_by_domain_name()
         {
-            await CreateDomain(MockDomainName);
+            await CreateDomainAsync(MockDomainName);
 
             var content = AutoFixture.Create<string>();
-            var record = await CreateRecord(content);
-            var updateRequest = new CreateRecordRequest
+            var record = await CreateRecordAsync(content);
+            var updateRequest = new RecordRequest
             {
                 Name = "",
                 Content = AutoFixture.Create<string>()
             };
 
             // Act
-            await _dnSimpleClient.Records.UpdateRecordByDomainName(MockDomainName, record.Id, updateRequest);
+            await _dnSimpleClient.Records.UpdateRecordByDomainNameAsync(MockDomainName, record.Id, updateRequest);
 
             // Assert
-            var result = await _dnSimpleClient.Records.GetRecordByDomainName(MockDomainName, record.Id);
+            var result = await _dnSimpleClient.Records.GetRecordByDomainNameAsync(MockDomainName, record.Id);
             result.Content.Should().Be(updateRequest.Content);
         }
 
         [Fact]
         public async Task Can_delete_by_domain_name()
         {
-            await CreateDomain(MockDomainName);
+            await CreateDomainAsync(MockDomainName);
 
             var content = AutoFixture.Create<string>();
-            var record = await CreateRecord(content);
+            var record = await CreateRecordAsync(content);
 
             // Act
-            await _dnSimpleClient.Records.DeleteRecordByDomainName(MockDomainName, record.Id);
+            await _dnSimpleClient.Records.DeleteRecordByDomainNameAsync(MockDomainName, record.Id);
 
             // Assert
-            var result = await _dnSimpleClient.Records.ListRecordsByDomainName(MockDomainName);
+            var result = await _dnSimpleClient.Records.ListRecordsByDomainNameAsync(MockDomainName);
             result.Should().NotContain(x => x.Id == record.Id);
         }
 
-        private async Task<ListDomainResult> CreateDomain(string domainName)
+        private async Task<DomainResult> CreateDomainAsync(string domainName)
         {
-            var domain = new CreateDomainRequest(MockDomainName);
-            return await _dnSimpleClient.Domains.CreateDomain(domain);
+            var domain = new DomainRequest(domainName);
+            return await _dnSimpleClient.Domains.CreateDomainAsync(domain);
         }
 
-        private async Task<RecordResult> CreateRecord(string context)
+        private async Task<RecordResponse> CreateRecordAsync(string context)
         {
-            var request = new CreateRecordRequest
+            var request = new RecordRequest
             {
                 RecordType = "TXT",
                 Name = "",
                 Content = context
             };
-            return await _dnSimpleClient.Records.CreateRecordByDomainName(MockDomainName, request);
+            return await _dnSimpleClient.Records.CreateRecordByDomainNameAsync(MockDomainName, request);
         }
 
         public void Dispose()
@@ -147,7 +147,7 @@
             {
                 try
                 {
-                    _dnSimpleClient.Domains.DeleteDomain(MockDomainName).Wait();
+                    _dnSimpleClient.Domains.DeleteDomainAsync(MockDomainName).Wait();
                 }
                 catch (Exception)
                 {

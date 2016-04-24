@@ -33,7 +33,7 @@
             await CreateDomain(MockDomainName);
 
             // Act
-            var result = await _dnSimpleClient.Domains.ListDomains();
+            var result = await _dnSimpleClient.Domains.ListDomainsAsync();
 
             // Assert
             result.Should().Contain(x => x.Name == MockDomainName);
@@ -45,7 +45,7 @@
             var domain = await CreateDomain(MockDomainName);
 
             // Act
-            var result = await _dnSimpleClient.Domains.GetDomain(MockDomainName);
+            var result = await _dnSimpleClient.Domains.GetDomainAsync(MockDomainName);
 
             // Assert
             result.Name.Should().Be(MockDomainName);
@@ -56,15 +56,15 @@
         [Fact]
         public async Task When_new_domain_is_created_list_should_return_it()
         {
-            var domain = new CreateDomainRequest(MockDomainName);
+            var domain = new DomainRequest(MockDomainName);
 
             // Act
-            var result = await _dnSimpleClient.Domains.CreateDomain(domain);
+            var result = await _dnSimpleClient.Domains.CreateDomainAsync(domain);
 
             // Assert
             result.Name.Should().Be(MockDomainName);
 
-            var list = await _dnSimpleClient.Domains.ListDomains();
+            var list = await _dnSimpleClient.Domains.ListDomainsAsync();
             list.Should().Contain(x => x.Name == MockDomainName);
         }
 
@@ -74,29 +74,29 @@
             await CreateDomain(MockDomainName);
 
             // Act
-            await _dnSimpleClient.Domains.DeleteDomain(MockDomainName);
+            await _dnSimpleClient.Domains.DeleteDomainAsync(MockDomainName);
 
             // Assert
-            var list = await _dnSimpleClient.Domains.ListDomains();
+            var list = await _dnSimpleClient.Domains.ListDomainsAsync();
             list.Should().NotContain(x => x.Name == MockDomainName);
         }
 
         [Fact(Skip = "Only for cleanup")]
         public async Task Delete_all()
         {
-            var list = await _dnSimpleClient.Domains.ListDomains();
+            var list = await _dnSimpleClient.Domains.ListDomainsAsync();
 
             // Act
             foreach (var listDomainResult in list)
             {
-                await _dnSimpleClient.Domains.DeleteDomain(listDomainResult.Name);
+                await _dnSimpleClient.Domains.DeleteDomainAsync(listDomainResult.Name);
             }
         }
 
-        private async Task<ListDomainResult> CreateDomain(string domainName)
+        private async Task<DomainResult> CreateDomain(string domainName)
         {
-            var domain = new CreateDomainRequest(MockDomainName);
-            return await _dnSimpleClient.Domains.CreateDomain(domain);
+            var domain = new DomainRequest(domainName);
+            return await _dnSimpleClient.Domains.CreateDomainAsync(domain);
         }
 
         public void Dispose()
@@ -105,7 +105,7 @@
             {
                 try
                 {
-                    _dnSimpleClient.Domains.DeleteDomain(MockDomainName).Wait();
+                    _dnSimpleClient.Domains.DeleteDomainAsync(MockDomainName).Wait();
                 }
                 catch (Exception)
                 {

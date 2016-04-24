@@ -15,15 +15,28 @@
         private readonly HttpClient _client;
         private readonly RefitSettings _settings;
 
-        public DNSimpleClient(string email, string password, string url = "https://api.dnsimple.com") : this()
+        /// <summary>
+        /// Authenticate with email-token combination.
+        /// </summary>
+        /// <param name="email">User's email address</param>
+        /// <param name="token">Api token</param>
+        /// <param name="url">DNSimple compatible api url</param>
+        public DNSimpleClient(string email, string token, string url = "https://api.dnsimple.com") : this()
         {
-            var clientHandler = new DNSimpleTokenHttpClientHandler(email, password);
+            var clientHandler = new DNSimpleTokenHttpClientHandler(email, token);
             _client = new HttpClient(clientHandler)
             {
                 BaseAddress = new Uri(url)
             };
         }
 
+        /// <summary>
+        /// Authenticate with email-password combination using basic authorization.
+        /// </summary>
+        /// <param name="email">User's email address</param>
+        /// <param name="password">User's password</param>
+        /// <param name="useBasic">True or false, there is no difference</param>
+        /// <param name="url">DNSimple compatible api url</param>
         // ReSharper disable once UnusedParameter.Local
         public DNSimpleClient(string email, string password, bool useBasic, string url = "https://api.dnsimple.com")
             : this()
@@ -35,6 +48,11 @@
             };
         }
 
+        /// <summary>
+        /// Authenticate with a domain level token.
+        /// </summary>
+        /// <param name="token">Token for a single domain</param>
+        /// <param name="url">DNSimple compatible api url</param>
         public DNSimpleClient(string token, string url = "https://api.dnsimple.com") : this()
         {
             var clientHandler = new DNSimpleDomainTokenHttpClientHandler(token);
