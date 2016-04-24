@@ -21,13 +21,9 @@
         /// <param name="email">User's email address</param>
         /// <param name="token">Api token</param>
         /// <param name="url">DNSimple compatible api url, defaults to https://api.dnsimple.com</param>
-        public DNSimpleClient(string email, string token, Uri url = null) : this()
+        public DNSimpleClient(string email, string token, Uri url = null)
+            : this(new DNSimpleTokenHttpClientHandler(email, token), url)
         {
-            var clientHandler = new DNSimpleTokenHttpClientHandler(email, token);
-            _client = new HttpClient(clientHandler)
-            {
-                BaseAddress = url ?? new Uri("https://api.dnsimple.com")
-            };
         }
 
         /// <summary>
@@ -39,13 +35,8 @@
         /// <param name="url">DNSimple compatible api url, defaults to https://api.dnsimple.com</param>
         // ReSharper disable once UnusedParameter.Local
         public DNSimpleClient(string email, string password, bool useBasic, Uri url = null)
-            : this()
+            : this(new BasicAuthenticationHttpClientHandler(email, password), url)
         {
-            var clientHandler = new BasicAuthenticationHttpClientHandler(email, password);
-            _client = new HttpClient(clientHandler)
-            {
-                BaseAddress = url ?? new Uri("https://api.dnsimple.com")
-            };
         }
 
         /// <summary>
@@ -53,17 +44,18 @@
         /// </summary>
         /// <param name="token">Token for a single domain</param>
         /// <param name="url">DNSimple compatible api url, defaults to https://api.dnsimple.com</param>
-        public DNSimpleClient(string token, Uri url = null) : this()
+        public DNSimpleClient(string token, Uri url = null)
+            : this(new DNSimpleDomainTokenHttpClientHandler(token), url)
         {
-            var clientHandler = new DNSimpleDomainTokenHttpClientHandler(token);
-            _client = new HttpClient(clientHandler)
-            {
-                BaseAddress = url ?? new Uri("https://api.dnsimple.com")
-            };
         }
 
-        private DNSimpleClient()
+        private DNSimpleClient(HttpMessageHandler loginHandler, Uri uri)
         {
+            _client = new HttpClient(loginHandler)
+            {
+                BaseAddress = uri ?? new Uri("https://api.dnsimple.com")
+            };
+
             _settings = new RefitSettings
             {
                 JsonSerializerSettings = new JsonSerializerSettings
