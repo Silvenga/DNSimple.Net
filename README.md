@@ -1,3 +1,5 @@
+![DNSimple.Net](docs/images/icon.png)
+
 # DNSimple.Net
 
 [![NuGet](https://img.shields.io/nuget/v/DNSimple.Net.V1.svg?style=flat-square&maxAge=2592000)](https://www.nuget.org/packages/DNSimple.Net.V1/)
